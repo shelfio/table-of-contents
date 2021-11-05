@@ -1,6 +1,10 @@
 # table-of-contents [![CircleCI](https://circleci.com/gh/shelfio/table-of-contents/tree/master.svg?style=svg)](https://circleci.com/gh/shelfio/table-of-contents/tree/master)![](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
 
 > Linkify HTML headers and generate a TOC.
+>
+> Forked from [node-toc](https://github.com/cowboy/node-toc)
+>
+> Rewritten in TypeScript & refactored to reduce bundle size (by not using entire lodash library)
 
 ## Install
 
