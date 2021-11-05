@@ -34,6 +34,6 @@ export const DEFAULT_SETTINGS: Settings = {
   TOC: '<div class="toc"><%= toc %></div>',
 };
 
-export function normalize(options?: Partial<Settings>): Settings {
-  return defaults({}, options, DEFAULT_SETTINGS);
+export function getSettings(settingsOverride?: Partial<Settings>): Settings {
+  return defaults({}, settingsOverride, DEFAULT_SETTINGS);
 }

@@ -3,27 +3,30 @@ import {Header, Settings} from '../types';
 import {untag} from './untag';
 import {unique} from './unique';
 import {anchor} from './anchor';
-import {normalize} from '../default-settings';
+import {getSettings} from '../default-settings';
 
 // Parse HTML, returning an array of header objects and anchorized HTML.
 export function anchorize(
   src: string,
-  options?: Pick<Settings, 'headers' | 'tocMin' | 'tocMax' | 'anchorMin' | 'anchorMax' | 'header'>
+  settingsOverride?: Pick<
+    Settings,
+    'headers' | 'tocMin' | 'tocMax' | 'anchorMin' | 'anchorMax' | 'header'
+  >
 ): {src: string; html: string; headers: Header[]} {
   // Normalize options and compile template(s).
-  options = normalize(options);
+  settingsOverride = getSettings(settingsOverride);
 
-  const headerTemplate = template(options.header);
+  const headerTemplate = template(settingsOverride.header);
 
   // Process HTML, "anchorizing" headers as-specified.
   const headers: Header[] = [];
   const names = {};
-  const html = src.replace(options.headers, function (all, level, attrs, header) {
+  const html = src.replace(settingsOverride.headers, function (all, level, attrs, header) {
     level = Number(level);
     // @ts-ignore
-    const tocLevel = level >= options.tocMin && level <= options.tocMax;
+    const tocLevel = level >= settingsOverride.tocMin && level <= settingsOverride.tocMax;
     // @ts-ignore
-    const anchorLevel = level >= options.anchorMin && level <= options.anchorMax;
+    const anchorLevel = level >= settingsOverride.anchorMin && level <= settingsOverride.anchorMax;
     let data: Header;
 
     if (tocLevel || anchorLevel) {

@@ -1,16 +1,16 @@
 import template from 'lodash.template';
 import {Header, Settings} from '../types';
-import {normalize} from '../default-settings';
+import {getSettings} from '../default-settings';
 
-export function toc(headers: Header[], options?: Partial<Settings>): string {
-  options = normalize(options);
+export function toc(headers: Header[], settingsOverride?: Partial<Settings>): string {
+  settingsOverride = getSettings(settingsOverride);
 
   const templates = {
-    TOC: template(options.TOC),
-    openUL: template(options.openUL),
-    closeUL: template(options.closeUL),
-    openLI: template(options.openLI),
-    closeLI: template(options.closeLI),
+    TOC: template(settingsOverride.TOC),
+    openUL: template(settingsOverride.openUL),
+    closeUL: template(settingsOverride.closeUL),
+    openLI: template(settingsOverride.openLI),
+    closeLI: template(settingsOverride.closeLI),
   };
 
   // Build TOC
