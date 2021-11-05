@@ -1,7 +1,8 @@
+import defaults from 'lodash.defaults';
 import {Settings} from './types';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-export default {
+export const DEFAULT_SETTINGS: Settings = {
   // DEFAULTS FOR toc.process()
   //
   // RegExp to replace with generated TOC.
@@ -31,4 +32,8 @@ export default {
   closeLI: '</li>',
   // Main TOC template.
   TOC: '<div class="toc"><%= toc %></div>',
-} as Settings;
+};
+
+export function normalize(options?: Partial<Settings>): Settings {
+  return defaults({}, options, DEFAULT_SETTINGS);
+}

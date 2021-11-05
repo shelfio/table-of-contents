@@ -1,6 +1,6 @@
 import template from 'lodash.template';
 import {Header, Settings} from '../types';
-import {normalize} from './normalize';
+import {normalize} from '../default-settings';
 
 export function toc(headers: Header[], options?: Partial<Settings>): string {
   options = normalize(options);
