@@ -72,29 +72,3 @@ describe('toc', () => {
     expect(actual).toEqual(expected);
   });
 });
-
-describe('process', () => {
-  it('should process using default options', () => {
-    const actual = toc.process(fixture('basic'));
-
-    expect(actual).toEqual(fixture('basic-expected'));
-  });
-
-  it('anchors should be unique', () => {
-    const actual = toc.process(fixture('unique'));
-
-    expect(actual).toEqual(fixture('unique-expected'));
-  });
-
-  it('should the correct headers should be anchorized', () => {
-    const actual = toc.process(fixture('anchorminmax'), {anchorMin: 3, anchorMax: 5});
-
-    expect(actual).toEqual(fixture('anchorminmax-expected'));
-  });
-
-  it('should TOC should only contain the correct anchors', () => {
-    const actual = toc.process(fixture('tocminmax'), {tocMin: 3, tocMax: 5});
-
-    expect(actual).toEqual(fixture('tocminmax-expected'));
-  });
-});

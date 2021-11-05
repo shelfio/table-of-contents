@@ -7,16 +7,6 @@ import {unique} from './helpers/unique';
 import {anchor} from './helpers/anchor';
 
 export const toc: TOC = {
-  // Anchorize all headers and inline a generated TOC, returning processed HTML.
-  process(src: any, options?: any): any {
-    // Get anchorized HTML and headers array.
-    const anchorized = toc.anchorize(src, options);
-    // Generate TOC from headers array.
-    const tocHtml = toc.toc(anchorized.headers, options);
-
-    // Insert the generated TOC into the anchorized HTML.
-    return anchorized.html.replace(normalize(options).placeholder, tocHtml);
-  },
   // Parse HTML, returning an array of header objects and anchorized HTML.
   anchorize(src: string, options?: any): {src: string; html: string; headers: Header[]} {
     // Normalize options and compile template(s).
@@ -97,7 +87,7 @@ export const toc: TOC = {
 export default toc;
 
 // Compile specified lodash string template properties into functions.
-function normalize(options: any, templates?: string[]): any {
+export function normalize(options: any, templates?: string[]): any {
   // Options override defaults and toc methods.
   const result = defaults({}, options, toc, DEFAULT_SETTINGS);
   // Remove "core" methods from result object.

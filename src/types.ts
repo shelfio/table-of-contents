@@ -14,7 +14,6 @@ export type Settings = {
 };
 
 export type TOC = {
-  process: (src: any, options?: any) => any;
   anchorize: (src: any, options?: any) => {src: string; html: string; headers: Header[]};
   toc: (headers: Header[], options?: any) => any;
 };
