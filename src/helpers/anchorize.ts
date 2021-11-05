@@ -1,8 +1,8 @@
 import {Header} from '../types';
-import {normalize} from '../index';
 import {untag} from './untag';
 import {unique} from './unique';
 import {anchor} from './anchor';
+import {normalize} from './normalize';
 
 // Parse HTML, returning an array of header objects and anchorized HTML.
 export function anchorize(

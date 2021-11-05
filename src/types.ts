@@ -13,10 +13,6 @@ export type Settings = {
   TOC: string;
 };
 
-export type TOC = {
-  toc: (headers: Header[], options?: any) => any;
-};
-
 export type Header = {
   level: number;
   depth?: number;
