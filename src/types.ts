@@ -14,7 +14,6 @@ export type Settings = {
 };
 
 export type TOC = {
-  untag: (str: string) => string;
   anchor: (str: string) => string;
   unique: (names: Record<string, unknown>, name: string) => string;
   process: (src: any, options?: any) => any;

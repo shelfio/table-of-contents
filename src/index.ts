@@ -4,13 +4,11 @@ import template from 'lodash.template';
 import defaults from 'lodash.defaults';
 import DEFAULT_SETTINGS from './default-settings';
 import {Header, TOC} from './types';
+import {untag} from './helpers/untag';
 
 export const toc: TOC = {
-  untag(str: string): string {
-    return str.replace(/<[^>]*>/g, '');
-  },
   anchor(s: string): string {
-    s = toc.untag(s);
+    s = untag(s);
     s = s.toLowerCase();
     s = decode(s);
     s = s.replace(/['"!]|[\.]+$/g, '');
@@ -68,7 +66,7 @@ export const toc: TOC = {
           // Header HTML contents.
           header: header,
           // Un-tagged header HTML contents.
-          text: options.untag(header),
+          text: untag(header),
           // Unique anchor name for this header.
           anchor: options.unique(names, options.anchor(header)),
           // All HTML (including tags) matched by the "headers" RegExp.

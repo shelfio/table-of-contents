@@ -8,32 +8,6 @@ function fixture(name: string): string {
   return fs.readFileSync(htmlfile).toString();
 }
 
-describe('untag', () => {
-  it('no tags to strip', () => {
-    expect(toc.untag('foo')).toEqual('foo');
-  });
-
-  it('should strip tags #1', () => {
-    expect(toc.untag('<b>foo</b>')).toEqual('foo');
-  });
-
-  it('should strip tags #2', () => {
-    expect(toc.untag('<b attribute=whatever>foo</b>')).toEqual('foo');
-  });
-
-  it('should strip tags #3', () => {
-    expect(toc.untag('<B>foo</B>')).toEqual('foo');
-  });
-
-  it('should strip tags #4', () => {
-    expect(toc.untag('<B><i>foo</i> <span><i>bar<i></span></B>')).toEqual('foo bar');
-  });
-
-  it('should not strip entities', () => {
-    expect(toc.untag('<i>foo&amp;bar</i>')).toEqual('foo&amp;bar');
-  });
-});
-
 describe('anchor', () => {
   it('should anchor is already lovely', () => {
     expect(toc.anchor('foo')).toEqual('foo');
