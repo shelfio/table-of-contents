@@ -39,7 +39,12 @@
     "extends": "@shelf/babel-config/backend"
   },
   "prettier": "@shelf/prettier-config",
-  "dependencies": {},
+  "dependencies": {
+    "entities": "3.0.1",
+    "lodash.defaults": "4.2.0",
+    "lodash.template": "4.5.0",
+    "slug": "5.1.0"
+  },
   "devDependencies": {
     "@babel/cli": "7.16.0",
     "@babel/core": "7.16.0",
@@ -48,7 +53,10 @@
     "@shelf/prettier-config": "1.0.0",
     "@shelf/tsconfig": "0.0.6",
     "@types/jest": "27.0.2",
+    "@types/lodash.defaults": "4.2.6",
+    "@types/lodash.template": "4.5.0",
     "@types/node": "14",
+    "@types/slug": "5.0.2",
     "eslint": "8.1.0",
     "husky": "7.0.4",
     "jest": "27.3.1",
