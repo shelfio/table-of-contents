@@ -50,34 +50,6 @@ describe('anchor', () => {
   });
 });
 
-describe('unique', () => {
-  const names = {};
-
-  it('should should be unique', () => {
-    expect(toc.unique(names, 'foo')).toEqual('foo');
-  });
-
-  it('no longer unique #1.', () => {
-    expect(toc.unique(names, 'foo')).toEqual('foo-1');
-  });
-
-  it('no longer unique #2.', () => {
-    expect(toc.unique(names, 'foo')).toEqual('foo-2');
-  });
-
-  it('should be unique', () => {
-    expect(toc.unique(names, 'bar')).toEqual('bar');
-  });
-
-  it('not unique #1', () => {
-    expect(toc.unique(names, 'foo-1')).toEqual('foo-1-1');
-  });
-
-  it('not unique #2', () => {
-    expect(toc.unique(names, 'foo-2')).toEqual('foo-2-1');
-  });
-});
-
 describe('anchorize', () => {
   const src =
     '<h1><b>H1</b> Header</h1>\n<h2 a=1><b>H2</b> Header</h2>\n<h3 b=2 c=3><b>H3</b> Header</h3>';
