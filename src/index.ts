@@ -1,26 +1,12 @@
-import slug from 'slug';
-import {decode} from 'entities';
 import template from 'lodash.template';
 import defaults from 'lodash.defaults';
 import DEFAULT_SETTINGS from './default-settings';
 import {Header, TOC} from './types';
 import {untag} from './helpers/untag';
 import {unique} from './helpers/unique';
+import {anchor} from './helpers/anchor';
 
 export const toc: TOC = {
-  anchor(s: string): string {
-    s = untag(s);
-    s = s.toLowerCase();
-    s = decode(s);
-    s = s.replace(/['"!]|[\.]+$/g, '');
-    s = slug(s);
-    s = s.replace(/[:\(\)]+/gi, '-');
-    s = s.replace(/[\s\-]*([\.])[\s\-]*/g, '$1');
-    s = s.replace(/-+/g, '-');
-    s = s.replace(/^-+|-+$/g, '');
-
-    return s;
-  },
   // Anchorize all headers and inline a generated TOC, returning processed HTML.
   process(src: any, options?: any): any {
     // Get anchorized HTML and headers array.
@@ -57,7 +43,7 @@ export const toc: TOC = {
           // Un-tagged header HTML contents.
           text: untag(header),
           // Unique anchor name for this header.
-          anchor: unique(names, options.anchor(header)),
+          anchor: unique(names, anchor(header)),
           // All HTML (including tags) matched by the "headers" RegExp.
           all: all,
         };
