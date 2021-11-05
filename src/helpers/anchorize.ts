@@ -8,9 +8,8 @@ import {getSettings} from '../default-settings';
 // Parse HTML, returning an array of header objects and anchorized HTML.
 export function anchorize(
   src: string,
-  settingsOverride?: Pick<
-    Settings,
-    'headers' | 'tocMin' | 'tocMax' | 'anchorMin' | 'anchorMax' | 'header'
+  settingsOverride?: Partial<
+    Pick<Settings, 'headers' | 'tocMin' | 'tocMax' | 'anchorMin' | 'anchorMax' | 'header'>
   >
 ): {src: string; html: string; headers: Header[]} {
   // Normalize options and compile template(s).
@@ -21,7 +20,7 @@ export function anchorize(
   // Process HTML, "anchorizing" headers as-specified.
   const headers: Header[] = [];
   const names = {};
-  const html = src.replace(settingsOverride.headers, function (all, level, attrs, header) {
+  const html = src.replace(settingsOverride.headers!, function (all, level, attrs, header) {
     level = Number(level);
     // @ts-ignore
     const tocLevel = level >= settingsOverride.tocMin && level <= settingsOverride.tocMax;

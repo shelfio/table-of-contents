@@ -1,7 +1,7 @@
 {
-  "name": "@shelf/xxxxxx",
+  "name": "@shelf/table-of-contents",
   "version": "0.0.0",
-  "description": "xxxxxx",
+  "description": "Fork of node-toc to reduce bundle size & rewritten in TypeScript",
   "license": "MIT",
   "author": {
     "name": "Vlad Holubiev",
