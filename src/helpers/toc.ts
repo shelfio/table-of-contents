@@ -1,9 +1,17 @@
-import {Header} from '../types';
+import template from 'lodash.template';
+import {Header, Settings} from '../types';
 import {normalize} from './normalize';
 
-export function toc(headers: Header[], options?: any): any {
-  // Normalize options and compile template(s).
-  options = normalize(options, ['TOC', 'openUL', 'closeUL', 'openLI', 'closeLI']);
+export function toc(headers: Header[], options?: Partial<Settings>): string {
+  options = normalize(options);
+
+  const templates = {
+    TOC: template(options.TOC),
+    openUL: template(options.openUL),
+    closeUL: template(options.closeUL),
+    openLI: template(options.openLI),
+    closeLI: template(options.closeLI),
+  };
 
   // Build TOC
   let cursor = 0;
@@ -18,14 +26,14 @@ export function toc(headers: Header[], options?: any): any {
     if (levels.length === 0 || header.level > levels[0]) {
       levels.unshift(header.level);
       header.depth = levels.length;
-      tocs[cursor] += options.openUL(header);
-      tocs.push(options.closeLI(header) + options.closeUL(header));
+      tocs[cursor] += templates.openUL(header);
+      tocs.push(templates.closeLI(header) + templates.closeUL(header));
     } else {
       header.depth = levels.length;
-      tocs[cursor] += options.closeLI(header);
+      tocs[cursor] += templates.closeLI(header);
     }
-    tocs[cursor] += options.openLI(header);
+    tocs[cursor] += templates.openLI(header);
   });
 
-  return options.TOC({toc: tocs.join('')});
+  return templates.TOC({toc: tocs.join('')});
 }

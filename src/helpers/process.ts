@@ -3,11 +3,11 @@ import {anchorize} from './anchorize';
 import {toc} from './toc';
 import {normalize} from './normalize';
 
-export function process(src: any, options?: any): any {
+export function process(src: string, options?: Parameters<typeof anchorize>[1]): string {
   // Get anchorized HTML and headers array.
   const anchorized = anchorize(src, options);
   // Generate TOC from headers array.
-  const tocHtml = toc(anchorized.headers, options);
+  const tocHtml = toc(anchorized.headers);
 
   // Insert the generated TOC into the anchorized HTML.
   return anchorized.html.replace(normalize(options).placeholder, tocHtml);
