@@ -6,12 +6,22 @@ const expected =
   '<h1><b>H1</b> Header</h1>\n<h2 a=1><a href="#h2-header" name="h2-header"><b>H2</b> Header</a></h2>\n<h3 b=2 c=3><a href="#h3-header" name="h3-header"><b>H3</b> Header</a></h3>';
 const actual = anchorize(src);
 
+const lowerLevelFirst =
+  '<h4 b=2 c=3><b>H4</b> Header</h4><h3 b=2 c=3><b>H3</b> Header</h3><h1><b>H1</b> Header</h1>\n<h2 a=1><b>H2</b> Header</h2>\n<h3 b=2 c=3><b>H3</b> Header</h3>';
+const lowerLevelFirstExpected =
+  '<h4 b=2 c=3><a href="#h4-header" name="h4-header"><b>H4</b> Header</a></h4><h3 b=2 c=3><a href="#h3-header" name="h3-header"><b>H3</b> Header</a></h3><h1><b>H1</b> Header</h1>\n' +
+  '<h2 a=1><a href="#h2-header" name="h2-header"><b>H2</b> Header</a></h2>\n' +
+  '<h3 b=2 c=3><a href="#h3-header-1" name="h3-header-1"><b>H3</b> Header</a></h3>';
+const lowerLevelActual = anchorize(lowerLevelFirst);
+
 it('should return unprocessed src.', () => {
   expect(actual.src).toEqual(src);
+  expect(lowerLevelActual.src).toEqual(lowerLevelFirst);
 });
 
 it('should return processed html.', () => {
   expect(actual.html).toEqual(expected);
+  expect(lowerLevelActual.html).toEqual(lowerLevelFirstExpected);
 });
 
 it('should return array of header objects.', () => {
@@ -31,6 +41,40 @@ it('should return array of header objects.', () => {
       text: 'H3 Header',
       anchor: 'h3-header',
       all: '<h3 b=2 c=3><b>H3</b> Header</h3>',
+    },
+  ]);
+  expect(lowerLevelActual.headers).toEqual([
+    {
+      all: '<h4 b=2 c=3><b>H4</b> Header</h4>',
+      anchor: 'h4-header',
+      attrs: ' b=2 c=3',
+      header: '<b>H4</b> Header',
+      level: 4,
+      text: 'H4 Header',
+    },
+    {
+      all: '<h3 b=2 c=3><b>H3</b> Header</h3>',
+      anchor: 'h3-header',
+      attrs: ' b=2 c=3',
+      header: '<b>H3</b> Header',
+      level: 3,
+      text: 'H3 Header',
+    },
+    {
+      all: '<h2 a=1><b>H2</b> Header</h2>',
+      anchor: 'h2-header',
+      attrs: ' a=1',
+      header: '<b>H2</b> Header',
+      level: 2,
+      text: 'H2 Header',
+    },
+    {
+      all: '<h3 b=2 c=3><b>H3</b> Header</h3>',
+      anchor: 'h3-header-1',
+      attrs: ' b=2 c=3',
+      header: '<b>H3</b> Header',
+      level: 3,
+      text: 'H3 Header',
     },
   ]);
 });

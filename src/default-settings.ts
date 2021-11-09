@@ -28,6 +28,7 @@ export const DEFAULT_SETTINGS: Settings = {
   openUL: '<ul>',
   closeUL: '</ul>',
   openLI: '<li><a href="#<%= anchor %>"><%= text %></a>',
+  openEmptyLI: '<li style="list-style-type: none;">',
   // openLI: '<li><a href="#<%= anchor %>"><%= text %></a> (<%= depth %> / H<%= level %>)',
   closeLI: '</li>',
   // Main TOC template.

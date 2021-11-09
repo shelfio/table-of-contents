@@ -11,6 +11,7 @@ export function toc(headers: Header[], settingsOverride?: Partial<Settings>): st
     closeUL: template(settingsOverride.closeUL),
     openLI: template(settingsOverride.openLI),
     closeLI: template(settingsOverride.closeLI),
+    openEmptyLI: template(settingsOverride.openEmptyLI),
   };
 
   // Build TOC
@@ -23,6 +24,11 @@ export function toc(headers: Header[], settingsOverride?: Partial<Settings>): st
       levels.shift();
       cursor++;
     }
+    const isAlone = levels.length === 0 && header.level > 1;
+    console.warn({isAlone, header, cursor, levels});
+
+    // if(levels.length > 0 && )
+
     if (levels.length === 0 || header.level > levels[0]) {
       levels.unshift(header.level);
       header.depth = levels.length;
@@ -33,6 +39,23 @@ export function toc(headers: Header[], settingsOverride?: Partial<Settings>): st
       tocs[cursor] += templates.closeLI(header);
     }
     tocs[cursor] += templates.openLI(header);
+
+    /**
+     * Wrap item in nesting ul/li
+     */
+    if (isAlone) {
+      let openPart = '';
+      let closePart = '';
+      Array(header.level - 1)
+        .join(',')
+        .split(',')
+        .forEach(() => {
+          openPart += `${templates.openUL(header)}${templates.openEmptyLI(header)}`;
+          closePart += `${templates.closeLI(header)}${templates.closeUL(header)}`;
+        });
+      tocs[cursor] = `${openPart}${tocs[cursor]}${closePart}`;
+      // console.warn(`haha alone!! adding ${Array(header.level - 1).length} ul/li`, {header, tocs});
+    }
   });
 
   return templates.TOC({toc: tocs.join('')});

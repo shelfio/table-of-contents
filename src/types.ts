@@ -9,6 +9,7 @@ export type Settings = {
   openUL: string;
   closeUL: string;
   openLI: string;
+  openEmptyLI: string;
   closeLI: string;
   TOC: string;
 };
