@@ -25,7 +25,6 @@ export function toc(headers: Header[], settingsOverride?: Partial<Settings>): st
       cursor++;
     }
     const isAlone = levels.length === 0 && header.level > 1;
-    console.warn({isAlone, header, cursor, levels});
 
     // if(levels.length > 0 && )
 

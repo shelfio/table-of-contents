@@ -94,7 +94,7 @@ it('should return lower levels if provided as designated', function () {
     },
   ];
   const actual = toc(headers);
-  const expected = `<div class="toc"><ul><li style="list-style-type: none;"><ul><li style="list-style-type: none;"><ul><li style="list-style-type: none;"><ul><li><a href="#h4-header">H4 Header</a></ul></li></ul></li></ul></li><ul><li style="list-style-type: none;"><ul><li style="list-style-type: none;"></li></ul><ul><li><a href="#h3-header">H3 Header</a></ul></li></ul></li></li></ul><ul><li><a href="#h1-header">H1 Header</a><ul><li><a href="#h2-header">H2 Header</a><ul><li><a href="#h3-header-1">H3 Header</a></li></ul></li></ul></li></ul></div>`;
+  const expected = `<div class="toc"><ul><li style="list-style-type: none;"><ul><li style="list-style-type: none;"><ul><li style="list-style-type: none;"><ul><li><a href="#h4-header">H4 Header</a></li></ul></li></ul></li></ul><ul><li style="list-style-type: none;"><ul><li style="list-style-type: none;"></li></ul><ul><li><a href="#h3-header">H3 Header</a></li></ul></li></ul><ul><li style="list-style-type: none;"></li></ul><ul><li><a href="#h2-header">H2 Header</a></li></ul><ul><li><a href="#h4-header">H4 Header</a></li></ul><ul><li><a href="#h3-header-1">H3 Header</a></li></ul></li><li><a href="#h2-header">H2 Header</a></li></ul><ul><li><a href="#h1-header">H1 Header</a><ul><li><a href="#h3-header-1">H3 Header</a></li></ul></li></ul></div>`;
 
   expect(actual).toEqual(expected);
 });
