@@ -46,7 +46,7 @@
     "slug": "5.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.17.3",
+    "@babel/cli": "7.17.6",
     "@babel/core": "7.17.5",
     "@shelf/babel-config": "0.1.4",
     "@shelf/eslint-config": "2.5.2",
