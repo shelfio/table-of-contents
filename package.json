@@ -36,7 +36,7 @@
     ]
   },
   "babel": {
-    "extends": "@shelf/babel-config/frontend"
+    "extends": "@shelf/babel-config/frontend-library"
   },
   "prettier": "@shelf/prettier-config",
   "dependencies": {
