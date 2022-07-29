@@ -40,7 +40,7 @@
   },
   "prettier": "@shelf/prettier-config",
   "dependencies": {
-    "entities": "3.0.1",
+    "entities": "4.3.1",
     "lodash.defaults": "4.2.0",
     "lodash.template": "4.5.0",
     "slug": "5.3.0"
