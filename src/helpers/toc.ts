@@ -1,5 +1,5 @@
 import template from 'lodash.template';
-import {Header, Settings} from '../types';
+import type {Header, Settings} from '../types';
 import {getSettings} from '../default-settings';
 
 export function toc(headers: Header[], settingsOverride?: Partial<Settings>): string {
@@ -35,5 +35,6 @@ export function toc(headers: Header[], settingsOverride?: Partial<Settings>): st
     tocs[cursor] += templates.openLI(header);
   });
 
+  // eslint-disable-next-line new-cap
   return templates.TOC({toc: tocs.join('')});
 }

@@ -1,5 +1,5 @@
 import template from 'lodash.template';
-import {Header, Settings} from '../types';
+import type {Header, Settings} from '../types';
 import {untag} from './untag';
 import {unique} from './unique';
 import {anchor} from './anchor';
