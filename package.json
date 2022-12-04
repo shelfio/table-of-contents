@@ -55,7 +55,7 @@
     "@types/lodash.template": "4.5.1",
     "@types/node": "18.11.10",
     "@types/slug": "5.0.3",
-    "eslint": "8.28.0",
+    "eslint": "8.29.0",
     "husky": "8.0.2",
     "jest": "29.3.1",
     "lint-staged": "13.1.0",
