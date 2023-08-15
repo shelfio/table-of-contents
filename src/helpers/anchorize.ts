@@ -1,9 +1,9 @@
 import template from 'lodash.template';
 import type {Header, Settings} from '../types';
+import {getSettings} from '../default-settings';
 import {untag} from './untag';
 import {unique} from './unique';
 import {anchor} from './anchor';
-import {getSettings} from '../default-settings';
 
 // Parse HTML, returning an array of header objects and anchorized HTML.
 export function anchorize(
