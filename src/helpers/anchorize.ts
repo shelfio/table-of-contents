@@ -4,6 +4,7 @@ import {getSettings} from '../default-settings';
 import {untag} from './untag';
 import {unique} from './unique';
 import {anchor} from './anchor';
+import {getDataWithoutNestedAnchors} from './getDataWithoutNestedAnchors';
 
 // Parse HTML, returning an array of header objects and anchorized HTML.
 export function anchorize(
@@ -51,8 +52,12 @@ export function anchorize(
       headers.push(data);
     }
 
+    if (anchorLevel) {
+      return getDataWithoutNestedAnchors(data, headerTemplate);
+    }
+
     // @ts-ignore
-    return anchorLevel ? headerTemplate(data) : all;
+    return all;
   });
 
   return {
