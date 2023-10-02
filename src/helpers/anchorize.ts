@@ -53,6 +53,7 @@ export function anchorize(
     }
 
     if (anchorLevel) {
+      // @ts-ignore
       return getDataWithoutNestedAnchors(data, headerTemplate);
     }
 
