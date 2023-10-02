@@ -31,3 +31,9 @@ it('should TOC should only contain the correct anchors', () => {
 
   expect(actual).toEqual(fixture('tocminmax-expected'));
 });
+
+it('should handle anchor tags content properly', () => {
+  const actual = process(fixture('nested'));
+
+  expect(actual).toEqual(fixture('nested-expected'));
+});
