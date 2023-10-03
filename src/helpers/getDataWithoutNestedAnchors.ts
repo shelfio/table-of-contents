@@ -34,6 +34,10 @@ export const getDataWithoutNestedAnchors = (data: Header, headerTemplate: Templa
     firstAnchorElement?.removeChild(node);
   });
 
+  if (firstAnchorElement) {
+    firstAnchorElement.innerHTML = '<wbr/>';
+  }
+
   const newContentArray = [firstAnchorElement, ...contentArray] as Node[];
 
   parentNode?.replaceChildren(...newContentArray);

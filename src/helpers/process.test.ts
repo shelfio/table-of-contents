@@ -33,7 +33,7 @@ it('should TOC should only contain the correct anchors', () => {
 });
 
 it('should handle anchor tags content properly', () => {
-  const actual = process(fixture('nested'));
+  const actual = process(fixture('nested'), {tocMin: 1, anchorMin: 1});
 
   expect(actual).toEqual(fixture('nested-expected'));
 });
