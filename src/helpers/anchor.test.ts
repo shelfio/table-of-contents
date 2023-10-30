@@ -1,4 +1,4 @@
-import {anchor} from './anchor';
+import {anchor} from './anchor.js';
 
 it('should anchor is already lovely', () => {
   expect(anchor('foo')).toEqual('foo');

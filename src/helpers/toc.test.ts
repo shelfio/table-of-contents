@@ -1,4 +1,4 @@
-import {toc} from './toc';
+import {toc} from './toc.js';
 
 it('should return generated TOC html', () => {
   const headers = [

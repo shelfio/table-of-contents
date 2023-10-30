@@ -1,4 +1,4 @@
-import {untag} from './untag';
+import {untag} from './untag.js';
 
 it('no tags to strip', () => {
   expect(untag('foo')).toEqual('foo');
