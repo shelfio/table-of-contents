@@ -1,7 +1,7 @@
 // Anchorize all headers and inline a generated TOC, returning processed HTML.
-import {getSettings} from '../default-settings';
-import {anchorize} from './anchorize';
-import {toc} from './toc';
+import {getSettings} from '../default-settings.js';
+import {anchorize} from './anchorize.js';
+import {toc} from './toc.js';
 
 export function process(src: string, settingsOverride?: Parameters<typeof anchorize>[1]): string {
   // Get anchorized HTML and headers array.

@@ -1,4 +1,4 @@
-import toc from './';
+import toc from './index.js';
 
 it('should export everything', () => {
   expect(toc.anchor).toBeInstanceOf(Function);

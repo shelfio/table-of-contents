@@ -1,5 +1,5 @@
 import type {TemplateExecutor} from 'lodash';
-import type {Header} from '../types';
+import type {Header} from '../types.js';
 
 const parser = new DOMParser();
 
