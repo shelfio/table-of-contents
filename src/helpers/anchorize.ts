@@ -48,16 +48,13 @@ export function anchorize(
     }
 
     if (tocLevel) {
-      // @ts-ignore
-      headers.push(data);
+      headers.push(data!);
     }
 
     if (anchorLevel) {
-      // @ts-ignore
-      return getDataWithoutNestedAnchors(data, headerTemplate);
+      return getDataWithoutNestedAnchors(data!, headerTemplate);
     }
 
-    // @ts-ignore
     return all;
   });
 

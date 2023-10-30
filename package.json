@@ -8,11 +8,11 @@
     "email": "vlad@shelf.io",
     "url": "https://shelf.io"
   },
+  "sideEffects": false,
   "type": "module",
   "exports": "./lib/index.js",
   "module": "./lib/index.js",
   "types": "lib/index.d.ts",
-  "sideEffects": false,
   "files": [
     "lib"
   ],
