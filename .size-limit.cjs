@@ -5,9 +5,9 @@ module.exports = [
     limit: '39 KB',
   },
   {
-    name: 'main',
+    name: 'DEFAULT_SETTINGS',
     path: 'lib/index.js',
     import: '{DEFAULT_SETTINGS}',
-    limit: '39 KB',
-  },
+    limit: '1.6 KB',
+  }
 ];
