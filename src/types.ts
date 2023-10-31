@@ -16,9 +16,9 @@ export type Settings = {
 export type Header = {
   level: number;
   depth?: number;
-  attrs: any;
-  header: any;
+  attrs: string;
+  header: string;
   text: string;
-  anchor: any;
-  all: any;
+  anchor: string;
+  all: string;
 };

@@ -1,4 +1,4 @@
-import {anchorize} from './anchorize';
+import {anchorize} from './anchorize.js';
 
 const src =
   '<h1><b>H1</b> Header</h1>\n<h2 a=1><b>H2</b> Header</h2>\n<h3 b=2 c=3><b>H3</b> Header</h3>';

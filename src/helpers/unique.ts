@@ -1,5 +1,4 @@
 // Get a unique name and store the returned name in names for future
-// unique-name-gettingness
 export function unique(names: Record<string, unknown>, name: string): string {
   let result = name;
   let count = 0;

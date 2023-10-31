@@ -1,7 +1,6 @@
 import defaults from 'lodash.defaults';
-import type {Settings} from './types';
+import type {Settings} from './types.js';
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export const DEFAULT_SETTINGS: Settings = {
   // DEFAULTS FOR toc.process()
   //

@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import {process} from './process';
+import {process} from './process.js';
 
 function fixture(name: string): string {
   const htmlfile = path.join(__dirname, '../', 'fixtures', `${name}.html`);

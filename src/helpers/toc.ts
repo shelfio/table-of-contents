@@ -1,6 +1,6 @@
 import template from 'lodash.template';
-import type {Header, Settings} from '../types';
-import {getSettings} from '../default-settings';
+import type {Header, Settings} from '../types.js';
+import {getSettings} from '../default-settings.js';
 
 export function toc(headers: Header[], settingsOverride?: Partial<Settings>): string {
   settingsOverride = getSettings(settingsOverride);

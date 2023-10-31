@@ -1,6 +1,6 @@
 import {decode} from 'entities';
 import slug from 'slug';
-import {untag} from './untag';
+import {untag} from './untag.js';
 
 export function anchor(s: string): string {
   s = untag(s);

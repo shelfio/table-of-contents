@@ -1,10 +1,10 @@
 import template from 'lodash.template';
-import type {Header, Settings} from '../types';
-import {getSettings} from '../default-settings';
-import {untag} from './untag';
-import {unique} from './unique';
-import {anchor} from './anchor';
-import {getDataWithoutNestedAnchors} from './getDataWithoutNestedAnchors';
+import type {Header, Settings} from '../types.js';
+import {getSettings} from '../default-settings.js';
+import {untag} from './untag.js';
+import {unique} from './unique.js';
+import {anchor} from './anchor.js';
+import {getDataWithoutNestedAnchors} from './getDataWithoutNestedAnchors.js';
 
 // Parse HTML, returning an array of header objects and anchorized HTML.
 export function anchorize(
@@ -48,16 +48,13 @@ export function anchorize(
     }
 
     if (tocLevel) {
-      // @ts-ignore
-      headers.push(data);
+      headers.push(data!);
     }
 
     if (anchorLevel) {
-      // @ts-ignore
-      return getDataWithoutNestedAnchors(data, headerTemplate);
+      return getDataWithoutNestedAnchors(data!, headerTemplate);
     }
 
-    // @ts-ignore
     return all;
   });
 

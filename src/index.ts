@@ -1,18 +1,18 @@
-import {anchor} from './helpers/anchor';
-import {anchorize} from './helpers/anchorize';
-import {process} from './helpers/process';
-import {toc} from './helpers/toc';
-import {unique} from './helpers/unique';
-import {untag} from './helpers/untag';
-import {DEFAULT_SETTINGS} from './default-settings';
+import {anchor} from './helpers/anchor.js';
+import {anchorize} from './helpers/anchorize.js';
+import {process} from './helpers/process.js';
+import {toc} from './helpers/toc.js';
+import {unique} from './helpers/unique.js';
+import {untag} from './helpers/untag.js';
+import {DEFAULT_SETTINGS} from './default-settings.js';
 
-export {anchor} from './helpers/anchor';
-export {anchorize} from './helpers/anchorize';
-export {process} from './helpers/process';
-export {toc} from './helpers/toc';
-export {unique} from './helpers/unique';
-export {untag} from './helpers/untag';
-export {DEFAULT_SETTINGS} from './default-settings';
+export {anchor} from './helpers/anchor.js';
+export {anchorize} from './helpers/anchorize.js';
+export {process} from './helpers/process.js';
+export {toc} from './helpers/toc.js';
+export {unique} from './helpers/unique.js';
+export {untag} from './helpers/untag.js';
+export {DEFAULT_SETTINGS} from './default-settings.js';
 
 const TOC = {
   DEFAULT_SETTINGS,
