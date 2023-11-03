@@ -1,6 +1,6 @@
 {
   "name": "@shelf/table-of-contents",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fork of node-toc to reduce bundle size & rewritten in TypeScript",
   "license": "MIT",
   "author": {
