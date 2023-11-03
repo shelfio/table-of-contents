@@ -22,7 +22,7 @@ export const getDataWithoutNestedAnchors = (data: Header, headerTemplate: Templa
   const doc = parser.parseFromString(results, 'text/xml');
 
   // get Toc pointer anchor node
-  const firstAnchorElement = doc.querySelector(`a[href="#${data.anchor}"]`);
+  const firstAnchorElement = doc.querySelector(`a[href="#${data.anchor}"]:not(:empty)`);
 
   // get all content nodes from Toc pointer anchor node
   const contentArray = Array.from(firstAnchorElement?.childNodes ?? []);
