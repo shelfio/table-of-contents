@@ -30,7 +30,7 @@ export const getDataWithoutNestedAnchors = (data: Header, headerTemplate: Templa
 
   if (otherAnchorElements && otherAnchorElements?.length > 0) {
     otherAnchorElements.forEach(node => {
-      parentNode?.removeChild(node);
+      node.remove();
     });
   }
   // get all content nodes from Toc pointer anchor node
