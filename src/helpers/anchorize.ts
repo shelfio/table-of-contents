@@ -21,6 +21,7 @@ export function anchorize(
   // Process HTML, "anchorizing" headers as-specified.
   const headers: Header[] = [];
   const names = {};
+  // @ts-ignore
   const html = src.replace(settingsOverride.headers!, function (all, level, attrs, header) {
     level = Number(level);
     // @ts-ignore

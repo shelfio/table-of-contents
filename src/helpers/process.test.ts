@@ -37,3 +37,9 @@ it('should handle anchor tags content properly', () => {
 
   expect(actual).toEqual(fixture('nested-expected'));
 });
+
+it('should handle anchor tags content properly 1', () => {
+  const actual = process(fixture('emptyanchor'), {tocMin: 1, anchorMin: 1});
+
+  expect(actual).toEqual(fixture('emptyanchor-expected'));
+});
