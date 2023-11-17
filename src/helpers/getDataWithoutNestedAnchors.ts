@@ -1,4 +1,5 @@
-import type {TemplateExecutor} from 'lodash';
+/* eslint-disable complexity */
+import {type TemplateExecutor} from 'lodash';
 import type {Header} from '../types.js';
 
 const parser = new DOMParser();
@@ -12,6 +13,16 @@ const hasAnchorTagsInHeader = (data: Header) => {
   return anchorElement?.outerHTML;
 };
 
+const getCleanTocAnchor = (doc: Document, data: Header) => {
+  const firstAnchorElement = doc.querySelector(`a[href="#${data.anchor}"]`);
+
+  if (firstAnchorElement) {
+    firstAnchorElement.innerHTML = '<wbr />';
+  }
+
+  return firstAnchorElement;
+};
+
 export const getDataWithoutNestedAnchors = (data: Header, headerTemplate: TemplateExecutor) => {
   const results = headerTemplate(data);
 
@@ -19,36 +30,27 @@ export const getDataWithoutNestedAnchors = (data: Header, headerTemplate: Templa
     return headerTemplate(data);
   }
 
-  const doc = parser.parseFromString(results, 'text/xml');
+  // separately parse the results to get the anchor tag
+  const resultsDoc = parser.parseFromString(results, 'text/html');
 
-  // get Toc pointer anchor node
-  const firstAnchorElement = doc.querySelector(`a[href="#${data.anchor}"]`);
+  const cleanAnchorNode = getCleanTocAnchor(resultsDoc, data);
 
-  const parentNode = firstAnchorElement?.parentElement;
-  // EDGECASE - other anchors in this header
-  const otherAnchorElements = doc?.querySelectorAll(`a:not([href="#${data.anchor}"]):empty`);
+  // parse the original header to get the header node
+  const doc = parser.parseFromString(data.all, 'text/html');
 
-  if (otherAnchorElements && otherAnchorElements?.length > 0) {
-    otherAnchorElements.forEach(node => {
-      node.remove();
-    });
-  }
-  // get all content nodes from Toc pointer anchor node
+  const headerNode = doc.querySelector(`h${data.level}`);
 
-  const contentArray = Array.from(firstAnchorElement?.childNodes ?? []);
+  if (headerNode && cleanAnchorNode) {
+    const firstHeaderChild = headerNode.firstChild;
 
-  // remove all content nodes from Toc pointer anchor node
-  contentArray.forEach(node => {
-    firstAnchorElement?.removeChild(node);
-  });
+    if (!firstHeaderChild) {
+      return;
+    }
 
-  if (firstAnchorElement) {
-    firstAnchorElement.innerHTML = '<wbr/>';
+    headerNode.insertBefore(cleanAnchorNode, firstHeaderChild);
+  } else {
+    return results;
   }
 
-  const newContentArray = [firstAnchorElement, ...contentArray] as Node[];
-
-  parentNode?.replaceChildren(...newContentArray);
-
-  return parentNode?.outerHTML || results;
+  return doc.body.innerHTML || results;
 };
