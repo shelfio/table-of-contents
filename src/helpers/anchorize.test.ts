@@ -3,7 +3,7 @@ import {anchorize} from './anchorize.js';
 const src =
   '<h1><b>H1</b> Header</h1>\n<h2 a=1><b>H2</b> Header</h2>\n<h3 b=2 c=3><b>H3</b> Header</h3>';
 const expected =
-  '<h1><b>H1</b> Header</h1>\n<h2 a=1><a href="#h2-header" name="h2-header"><b>H2</b> Header</a></h2>\n<h3 b=2 c=3><a href="#h3-header" name="h3-header"><b>H3</b> Header</a></h3>';
+  '<h1><b>H1</b> Header</h1>\n<h2 a=1><a href="#h2-header" name="h2-header"><wbr /></a><b>H2</b> Header</h2>\n<h3 b=2 c=3><a href="#h3-header" name="h3-header"><wbr /></a><b>H3</b> Header</h3>';
 const actual = anchorize(src);
 
 it('should return unprocessed src.', () => {
