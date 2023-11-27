@@ -4,7 +4,6 @@ import {getSettings} from '../default-settings.js';
 import {untag} from './untag.js';
 import {unique} from './unique.js';
 import {anchor} from './anchor.js';
-import {getDataWithoutNestedAnchors} from './getDataWithoutNestedAnchors.js';
 
 // Parse HTML, returning an array of header objects and anchorized HTML.
 export function anchorize(
@@ -53,7 +52,7 @@ export function anchorize(
     }
 
     if (anchorLevel) {
-      return getDataWithoutNestedAnchors(data!, headerTemplate);
+      return headerTemplate(data!);
     }
 
     return all;

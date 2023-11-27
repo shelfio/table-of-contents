@@ -1,6 +1,9 @@
 import defaults from 'lodash.defaults';
 import type {Settings} from './types.js';
 
+const DEFAULT_TEMPLATE =
+  '<h<%= level %><%= attrs %>><a href="#<%= anchor %>" name="<%= anchor %>"><wbr /></a><%= header %></h<%= level %>>';
+
 export const DEFAULT_SETTINGS: Settings = {
   // DEFAULTS FOR toc.process()
   //
@@ -18,8 +21,7 @@ export const DEFAULT_SETTINGS: Settings = {
   anchorMin: 2,
   anchorMax: 6,
   // Anchorized header template.
-  header:
-    '<h<%= level %><%= attrs %>><a href="#<%= anchor %>" name="<%= anchor %>"><%= header %></a></h<%= level %>>',
+  header: DEFAULT_TEMPLATE,
 
   // DEFAULTS FOR toc.toc()
   //
