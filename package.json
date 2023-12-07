@@ -64,7 +64,7 @@
     "prettier": "3.1.1",
     "size-limit": "11.0.0",
     "ts-jest-resolver": "2.0.1",
-    "typescript": "5.2.2"
+    "typescript": "5.3.3"
   },
   "engines": {
     "node": ">=14"
