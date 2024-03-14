@@ -41,7 +41,7 @@
     "entities": "4.5.0",
     "lodash.defaults": "4.2.0",
     "lodash.template": "4.5.0",
-    "slug": "8.2.3"
+    "slug": "9.0.0"
   },
   "devDependencies": {
     "@shelf/eslint-config": "3.14.0",
