@@ -1,4 +1,3 @@
-import defaults from 'lodash.defaults';
 import type {Settings} from './types.js';
 
 const DEFAULT_TEMPLATE =
@@ -36,5 +35,5 @@ export const DEFAULT_SETTINGS: Settings = {
 };
 
 export function getSettings(settingsOverride?: Partial<Settings>): Settings {
-  return defaults({}, settingsOverride, DEFAULT_SETTINGS);
+  return {...DEFAULT_SETTINGS, ...settingsOverride};
 }
