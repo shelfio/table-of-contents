@@ -51,7 +51,7 @@
     "@size-limit/preset-small-lib": "11.1.4",
     "@swc/core": "1.7.23",
     "@swc/jest": "0.2.36",
-    "@types/jest": "29.5.12",
+    "@types/jest": "29.5.13",
     "@types/lodash.defaults": "4.2.9",
     "@types/lodash.template": "4.5.3",
     "@types/node": "20.8.9",
