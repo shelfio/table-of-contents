@@ -5,6 +5,7 @@ const config = {
     '^.+\\.(t|j)s$': '@swc/jest',
   },
   resolver: 'ts-jest-resolver',
+  transformIgnorePatterns: ['node_modules/(?!(lodash-es)/)'],
 };
 
 export default config;
