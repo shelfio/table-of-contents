@@ -1,4 +1,4 @@
-import template from 'lodash.template';
+import {template} from 'lodash-es';
 import type {Header, Settings} from '../types.js';
 import {getSettings} from '../default-settings.js';
 
