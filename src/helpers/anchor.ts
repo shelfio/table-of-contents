@@ -1,11 +1,11 @@
-import {decode} from 'entities';
+import {decodeHTML} from 'entities';
 import slug from 'slug';
 import {untag} from './untag.js';
 
 export function anchor(s: string): string {
   s = untag(s);
   s = s.toLowerCase();
-  s = decode(s);
+  s = decodeHTML(s);
   s = s.replace(/['"!]|[\\.]+$/g, '');
   s = slug(s);
   s = s.replace(/[:\\(\\)]+/gi, '-');

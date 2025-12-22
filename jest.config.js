@@ -5,7 +5,8 @@ const config = {
     '^.+\\.(t|j)s$': '@swc/jest',
   },
   resolver: 'ts-jest-resolver',
-  transformIgnorePatterns: ['node_modules/(?!(lodash-es)/)'],
+  // Allow transforming lodash-es (ESM) even when resolved via pnpm's store path.
+  transformIgnorePatterns: ['node_modules/(?!.*lodash-es)'],
 };
 
 export default config;
