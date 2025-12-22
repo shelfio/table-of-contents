@@ -1,4 +1,4 @@
-import {template} from 'lodash-es';
+import {escape as escapeHtml, template} from 'lodash-es';
 import {decodeHTML} from 'entities';
 import type {Header, Settings} from '../types.js';
 import {getSettings} from '../default-settings.js';
@@ -38,9 +38,10 @@ export function anchorize(
     const anchorLevel = level >= settingsOverride.anchorMin && level <= settingsOverride.anchorMax;
     const untaggedHeader = untag(header);
     const decodedHeader = decodeHTML(untaggedHeader);
-    const displayText = decodedHeader.replace(/\u00a0/g, ' ');
-    const normalizedText = normalizeAnchorText(displayText);
-    const anchorSource = normalizedText || decodedHeader.trim();
+    const normalizedHeader = decodedHeader.replace(/\u00a0/g, ' ');
+    const displayText = escapeHtml(normalizedHeader);
+    const normalizedText = normalizeAnchorText(normalizedHeader);
+    const anchorSource = normalizedText || normalizedHeader.trim();
     let data: Header;
 
     if (tocLevel || anchorLevel) {

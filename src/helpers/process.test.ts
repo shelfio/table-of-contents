@@ -49,3 +49,9 @@ it('should decode entities and normalize whitespace in TOC entries', () => {
 
   expect(actual).toEqual(fixture('nbsp-headings-expected'));
 });
+
+it('should not turn encoded HTML into live elements inside the TOC', () => {
+  const actual = process(fixture('dangerous-entities'));
+
+  expect(actual).toEqual(fixture('dangerous-entities-expected'));
+});
