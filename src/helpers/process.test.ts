@@ -43,3 +43,9 @@ it('should handle anchor tags content properly 1', () => {
 
   expect(actual).toEqual(fixture('emptyanchor-expected'));
 });
+
+it('should decode entities and normalize whitespace in TOC entries', () => {
+  const actual = process(fixture('nbsp-headings'));
+
+  expect(actual).toEqual(fixture('nbsp-headings-expected'));
+});
