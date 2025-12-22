@@ -59,7 +59,7 @@
   "engines": {
     "node": ">=14"
   },
-  "packageManager": "pnpm",
+  "packageManager": "pnpm@10.26.1",
   "publishConfig": {
     "access": "public"
   },
