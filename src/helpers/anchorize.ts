@@ -38,8 +38,8 @@ export function anchorize(
     const anchorLevel = level >= settingsOverride.anchorMin && level <= settingsOverride.anchorMax;
     const untaggedHeader = untag(header);
     const decodedHeader = decodeHTML(untaggedHeader);
-    const displayText = decodedHeader;
-    const normalizedText = normalizeAnchorText(decodedHeader);
+    const displayText = decodedHeader.replace(/\u00a0/g, ' ');
+    const normalizedText = normalizeAnchorText(displayText);
     const anchorSource = normalizedText || decodedHeader.trim();
     let data: Header;
 
