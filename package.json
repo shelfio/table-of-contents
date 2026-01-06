@@ -28,6 +28,14 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
   },
+  "lint-staged": {
+    "*.{html,md,yml}": [
+      "prettier --write"
+    ],
+    "*.{js,ts,json}": [
+      "eslint --fix"
+    ]
+  },
   "prettier": "@shelf/prettier-config",
   "dependencies": {
     "entities": "5.0.0",
@@ -56,19 +64,11 @@
     "ts-jest-resolver": "2.0.1",
     "typescript": "5.8.3"
   },
+  "packageManager": "pnpm",
   "engines": {
     "node": ">=14"
   },
-  "packageManager": "pnpm",
   "publishConfig": {
     "access": "public"
-  },
-  "lint-staged": {
-    "*.{html,md,yml}": [
-      "prettier --write"
-    ],
-    "*.{js,ts,json}": [
-      "eslint --fix"
-    ]
   }
 }

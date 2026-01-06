@@ -45,7 +45,7 @@ it('should render decoded characters in the DOM while keeping HTML escaped in so
   const html = toc(headers);
   const container = document.createElement('div');
   container.innerHTML = html;
-  const links = Array.from(container.querySelectorAll('a')).map((a) => a.textContent);
+  const links = Array.from(container.querySelectorAll('a')).map(a => a.textContent);
 
   expect(links).toEqual(['Fish & Chips', '"Quoted" & \'single\'', 'Non Breaking Space']);
 });
