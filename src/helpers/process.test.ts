@@ -55,3 +55,18 @@ it('should not turn encoded HTML into live elements inside the TOC', () => {
 
   expect(actual).toEqual(fixture('dangerous-entities-expected'));
 });
+
+it('should decode entities for consumer text while keeping generated TOC escaped', () => {
+  const src =
+    '<!-- toc -->\n<h2>Fish &amp; Chips</h2>\n<h3>"Quoted" &amp; &#39;single&#39;</h3>\n<h2>Non&nbsp;Breaking&nbsp;Space</h2>';
+  const actual = process(src);
+
+  expect(actual).toContain('<a href="#fish-chips">Fish &amp; Chips</a>');
+  expect(actual).toContain(
+    '<a href="#quoted-single">&quot;Quoted&quot; &amp; &#39;single&#39;</a>'
+  );
+  expect(actual).toContain('<a href="#non-breaking-space">Non Breaking Space</a>');
+  expect(actual).toContain(
+    '<a href="#fish-chips" name="fish-chips"><wbr /></a>Fish &amp; Chips</h2>'
+  );
+});
