@@ -1,3 +1,4 @@
+import {anchorize} from './anchorize.js';
 import {toc} from './toc.js';
 
 it('should return generated TOC html', () => {
@@ -24,4 +25,27 @@ it('should return generated TOC html', () => {
     '<div class="toc"><ul><li><a href="#h2-header">H2 Header</a><ul><li><a href="#h3-header">H3 Header</a></li></ul></li></ul></div>';
 
   expect(actual).toEqual(expected);
+});
+
+it('should escape decoded header text when generating TOC HTML', () => {
+  const src =
+    '<h2>Fish &amp; Chips</h2>\n<h3>"Quoted" &amp; &#39;single&#39;</h3>\n<h2>Non&nbsp;Breaking&nbsp;Space</h2>';
+  const {headers} = anchorize(src);
+  const actual = toc(headers);
+  const expected =
+    '<div class="toc"><ul><li><a href="#fish-chips">Fish &amp; Chips</a><ul><li><a href="#quoted-single">&quot;Quoted&quot; &amp; &#39;single&#39;</a></li></ul></li><li><a href="#non-breaking-space">Non Breaking Space</a></li></ul></div>';
+
+  expect(actual).toEqual(expected);
+});
+
+it('should render decoded characters in the DOM while keeping HTML escaped in source', () => {
+  const src =
+    '<h2>Fish &amp; Chips</h2>\n<h3>"Quoted" &amp; &#39;single&#39;</h3>\n<h2>Non&nbsp;Breaking&nbsp;Space</h2>';
+  const {headers} = anchorize(src);
+  const html = toc(headers);
+  const container = document.createElement('div');
+  container.innerHTML = html;
+  const links = Array.from(container.querySelectorAll('a')).map(a => a.textContent);
+
+  expect(links).toEqual(['Fish & Chips', '"Quoted" & \'single\'', 'Non Breaking Space']);
 });

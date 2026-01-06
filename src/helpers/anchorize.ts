@@ -1,4 +1,4 @@
-import {escape as escapeHtml, template} from 'lodash-es';
+import {template} from 'lodash-es';
 import {decodeHTML} from 'entities';
 import type {Header, Settings} from '../types.js';
 import {getSettings} from '../default-settings.js';
@@ -39,7 +39,6 @@ export function anchorize(
     const untaggedHeader = untag(header);
     const decodedHeader = decodeHTML(untaggedHeader);
     const normalizedHeader = decodedHeader.replace(/\u00a0/g, ' ');
-    const displayText = escapeHtml(normalizedHeader);
     const normalizedText = normalizeAnchorText(normalizedHeader);
     const anchorSource = normalizedText || normalizedHeader.trim();
     let data: Header;
@@ -54,7 +53,7 @@ export function anchorize(
         // Header HTML contents.
         header: header,
         // Un-tagged header HTML contents.
-        text: displayText,
+        text: normalizedHeader,
         // Unique anchor name for this header.
         anchor: unique(names, anchor(anchorSource)),
         // All HTML (including tags) matched by the "headers" RegExp.

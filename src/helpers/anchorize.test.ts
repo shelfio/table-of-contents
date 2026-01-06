@@ -34,3 +34,16 @@ it('should return array of header objects.', () => {
     },
   ]);
 });
+
+it('should decode entity text for consumers while keeping anchors stable', () => {
+  const entitiesSrc =
+    '<h2>Fish &amp; Chips</h2>\n<h3>"Quoted" &amp; &#39;single&#39;</h3>\n<h2>Non&nbsp;Breaking&nbsp;Space</h2>';
+  const {headers} = anchorize(entitiesSrc);
+
+  expect(headers.map(h => h.text)).toEqual([
+    'Fish & Chips',
+    `"Quoted" & 'single'`,
+    'Non Breaking Space',
+  ]);
+  expect(headers.map(h => h.anchor)).toEqual(['fish-chips', 'quoted-single', 'non-breaking-space']);
+});

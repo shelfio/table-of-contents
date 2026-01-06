@@ -1,4 +1,4 @@
-import {template} from 'lodash-es';
+import {escape as escapeHtml, template} from 'lodash-es';
 import type {Header, Settings} from '../types.js';
 import {getSettings} from '../default-settings.js';
 
@@ -26,13 +26,16 @@ export function toc(headers: Header[], settingsOverride?: Partial<Settings>): st
     if (levels.length === 0 || header.level > levels[0]) {
       levels.unshift(header.level);
       header.depth = levels.length;
-      tocs[cursor] += templates.openUL(header);
-      tocs.push(templates.closeLI(header) + templates.closeUL(header));
+      const templateData = {...header, text: escapeHtml(header.text)};
+      tocs[cursor] += templates.openUL(templateData);
+      tocs.push(templates.closeLI(templateData) + templates.closeUL(templateData));
+      tocs[cursor] += templates.openLI(templateData);
     } else {
       header.depth = levels.length;
-      tocs[cursor] += templates.closeLI(header);
+      const templateData = {...header, text: escapeHtml(header.text)};
+      tocs[cursor] += templates.closeLI(templateData);
+      tocs[cursor] += templates.openLI(templateData);
     }
-    tocs[cursor] += templates.openLI(header);
   });
 
   // eslint-disable-next-line new-cap
