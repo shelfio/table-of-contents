@@ -1,4 +1,4 @@
-# table-of-contents [![CircleCI](https://circleci.com/gh/shelfio/table-of-contents/tree/master.svg?style=svg)](https://circleci.com/gh/shelfio/table-of-contents/tree/master)![](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
+# table-of-contents [![CircleCI](https://circleci.com/gh/shelfio/table-of-contents/tree/master.svg?style=svg)](https://circleci.com/gh/shelfio/table-of-contents/tree/master)![](https://img.shields.io/badge/code_style-oxfmt-0ea5e9.svg)
 
 > Linkify HTML headers and generate a TOC.
 >

@@ -9,5 +9,5 @@ module.exports = [
     path: 'lib/index.js',
     import: '{DEFAULT_SETTINGS}',
     limit: '1.6 KB',
-  }
+  },
 ];
