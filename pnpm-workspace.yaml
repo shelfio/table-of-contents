@@ -1,0 +1,6 @@
+trustPolicy: no-downgrade
+blockExoticSubdeps: true
+minimumReleaseAge: 20160
+minimumReleaseAgeExclude:
+  - '@shelf/*'
+ignoreScripts: true
