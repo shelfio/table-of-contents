@@ -3,4 +3,6 @@ blockExoticSubdeps: true
 minimumReleaseAge: 20160
 minimumReleaseAgeExclude:
   - '@shelf/*'
+  # Renovate security update: lodash-es@4.18.1
+  - lodash-es@4.18.1
 ignoreScripts: true
