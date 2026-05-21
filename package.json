@@ -62,7 +62,7 @@
     "oxfmt": "0.41.0",
     "size-limit": "11.2.0",
     "ts-jest-resolver": "2.0.1",
-    "typescript": "5.8.3"
+    "typescript": "5.9.3"
   },
   "packageManager": "pnpm@10.32.1",
   "engines": {
